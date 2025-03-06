@@ -1,5 +1,7 @@
-# Godot Mod Framework
+# Godot Mod Framework Menus
 A Godot game template that is set up for mod support from the beginning
+
+This Menus version includes a main menu and a settings menu
 
 Inspired by: https://www.youtube.com/watch?v=tTdToEu6x8U and https://www.youtube.com/watch?v=K3MnEvrC8TA
 
@@ -11,7 +13,11 @@ Build the game as a collection of mods to ensure that your game properly support
 
 ### Godot Mod Framework
  - Basic version that loads a single mod and prints a hello world message. Can be used as a solid baseline for custom implementation
- - (This repo)
+ - [GitHub Repo](https://github.com/ThomasSilloway/Godot-Mod-Framework)
+
+### Godot Mod Framework Menus
+ - Version that includes a main menu and settings menu setup as mods
+ - (this repo)
 
 ### Mods built with this template
  - [Full Game Mod (Flappy Bird Clone)](https://github.com/ThomasSilloway/Godot-Mod-Framework-Flappy-Bird-Clone)
@@ -27,6 +33,9 @@ This repository is set up as a GitHub template. To create your own project based
 
 - Each mod is a separate godot project
 - `startup` is the main project that does loading mods. Handles global things too like Settings, Config
+- `mainmenu` is the first mod that displays the main menu for the project.
+- `settings_menu` is the mod that injects a settings button into the main menu which opens a settings menu
+  - The settings menu updates the values in the `SettingsManager` in the `main` project automatically by having its own placeholder `SettingsManager` autoloaded which is not included in the exported project. Surprisingly having a file in the auto load that is not included in the exported project doesn't break anything.
 
 ## Usage - Manual
 
@@ -40,6 +49,7 @@ This repository is set up as a GitHub template. To create your own project based
 ## Usage - Automated
 - Update `scripts/build.bat` to match your paths
 - Run the build batch file to automatically create versioned builds
+- There's also individual build batch files for each mod that can be run to build just that mod and copy the previous builds files into this build
 
 ## Updating From Template
 
@@ -61,14 +71,4 @@ git merge template/[branch to merge] --allow-unrelated-histories
 For more details, see: https://help.github.com/en/articles/adding-a-remote
 
 ## Areas to explore in the future
-I'm not sure if I'll be adding these features, but they are worth exploring if someone wants to tackle them
-- Inside of a mod can you do this?
-  - Can you print out all of the resources?
-  - Can you print out any of the code?
-  - Can you overwrite / update enums in a mod?
-- Add a way to for mods to add their own options to "mod settings"
-- Add a UI to show the mods that are loaded, ideally load and unload mods from inside the game
-
-## Notes
- - You can overwrite the `startup` project's audio buses with your own custom names
-
+ - Add mid game menu that pauses the game and allows you to resume, settings, or quit
